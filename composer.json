@@ -1,0 +1,32 @@
+{
+  "name": "lyz/wechat-sdk",
+  "description": "WeChat platform and WeChat payment development tools",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "lyz",
+      "email": "lyz168x@qq.com"
+    }
+  ],
+  "keywords": [
+    "wechat",
+    "wechat-sdk",
+    "WeChatDeveloper"
+  ],
+  "require": {
+    "php": ">=5.4",
+    "ext-xml": "*",
+    "ext-json": "*",
+    "ext-curl": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "lyz\\wepay\\": "src/wepay",
+      "lyz\\wechat\\": "src/wechat",
+      "lyz\\applet\\": "src/applet",
+      "lyz\\wepayv3\\": "src/wepayv3"
+    }
+  },
+  "minimum-stability": "dev"
+}

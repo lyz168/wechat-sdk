@@ -1,0 +1,6 @@
+/.idea
+/vendor/
+/composer.lock
+/demo/config.php
+/demo/cache/
+/demo/cert/
