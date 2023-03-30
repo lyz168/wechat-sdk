@@ -2,9 +2,10 @@
 
 namespace lyz\applet;
 
-use lyz\wechat\Contracts\BasicWeChat;
 use lyz\wechat\exceptions\InvalidResponseException;
 use lyz\wechat\exceptions\InvalidDecryptException;
+use lyz\wechat\Contracts\BasicWeChat;
+use lyz\wechat\utils\Curl;
 
 /**
  * 用户信息 数据加密处理
@@ -41,7 +42,8 @@ class InfoCrypt extends BasicWeChat
         $appid = $this->config->get('appid');
         $secret = $this->config->get('appsecret');
         $url = "https://api.weixin.qq.com/sns/jscode2session?appid={$appid}&secret={$secret}&js_code={$code}&grant_type=authorization_code";
-        // return json_decode(Tools::get($url), true);
+        $curl = new Curl();
+        return $curl->get($url);
     }
 
     /**

@@ -207,20 +207,4 @@ class ErrorMsg
 	{
 		return isset(self::$message[$code]) ? self::$message[$code] : $code;
 	}
-
-	/**
-	 * 返回错误信息
-	 * @param int $code 错误码
-	 * @param string $errorMsg 错误信息
-	 * @return Ambigous <multitype:unknown , multitype:, boolean>
-	 */
-	public static function returnErrMsg($code,  $errorMsg = null)
-	{
-		$returnMsg = array('error_code' => $code);
-		if (!empty($errorMsg)) {
-			$returnMsg['error_msg'] = $errorMsg;
-		}
-		$returnMsg['custom_msg'] = $returnMsg['error_code'] . ': ' . $returnMsg['error_msg'];
-		exit($returnMsg['custom_msg']);
-	}
 }

@@ -5,7 +5,6 @@ namespace lyz\wechat\Contracts;
 use lyz\wechat\exceptions\InvalidArgumentException;
 use lyz\wechat\exceptions\InvalidResponseException;
 use lyz\wechat\exceptions\InvalidDecryptException;
-use lyz\wechat\exceptions\ErrorMsg;
 use lyz\wechat\aes\Prpcrypt;
 use lyz\wechat\utils\Tools;
 
@@ -100,8 +99,7 @@ class BasicPushEvent
             @ob_clean();
             exit($this->input->get('echostr'));
         } else {
-            ErrorMsg::returnErrMsg('0', 'Invalid interface request.');
-            // throw new InvalidResponseException('Invalid interface request.', '0');
+            throw new InvalidResponseException('Invalid interface request.', '0');
         }
     }
 

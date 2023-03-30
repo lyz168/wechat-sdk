@@ -2,10 +2,10 @@
 
 namespace lyz\wechat\Contracts;
 
-use lyz\wechat\utils\Curl;
-use lyz\wechat\utils\Tools;
-use lyz\wechat\exceptions\ErrorMsg;
 use lyz\wechat\exceptions\InvalidArgumentException;
+use lyz\wechat\exceptions\InvalidResponseException;
+use lyz\wechat\utils\Tools;
+use lyz\wechat\utils\Curl;
 
 /**
  * Class BasicWeChat
@@ -62,7 +62,7 @@ class BasicWeChat
         if ($is_callback && !empty($this->GetAccessTokenCallback) && Tools::checkCallback($this->GetAccessTokenCallback)) {
             $access_token = call_user_func_array($this->GetAccessTokenCallback, [$this]);
             if (empty($access_token)) {
-                return ErrorMsg::returnErrMsg(ErrorMsg::ERROR_GET_ACCESS_TOKEN, '获取 ACCESS_TOKEN 失败');
+                throw new InvalidResponseException("获取 ACCESS_TOKEN 失败");
             }
             return $access_token;
         }
@@ -113,7 +113,7 @@ class BasicWeChat
         $curl = new Curl();
         $accessToken = $curl->get($url);
         if (!isset($accessToken['access_token'])) {
-            return ErrorMsg::returnErrMsg(ErrorMsg::ERROR_GET_ACCESS_TOKEN, '获取 ACCESS_TOKEN 失败');
+            throw new InvalidResponseException("获取 ACCESS_TOKEN 失败");
         }
 
         return $accessToken;

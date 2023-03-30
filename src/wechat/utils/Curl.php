@@ -81,7 +81,7 @@ class Curl
      * GET
      * @param string $url
      * @param array|string $data get请求参数
-     * @return CurlResponse 如果请求成功，则返回CurlResponse对象，否则返回false
+     * @return array|boolean
      **/
     function get($url = '', $data = [])
     {
@@ -100,7 +100,7 @@ class Curl
      *
      * @param string $url
      * @param array  $data post 请求参数
-     * @return CurlResponse|boolean
+     * @return array|boolean
      **/
     function post($url = '', $data = array())
     {
