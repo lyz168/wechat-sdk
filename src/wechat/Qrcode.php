@@ -2,7 +2,7 @@
 
 namespace lyz\wechat;
 
-use lyz\wechat\Contracts\BasicWeChat;
+use lyz\wechat\contracts\BasicWeChat;
 use lyz\wechat\utils\Curl;
 
 /**

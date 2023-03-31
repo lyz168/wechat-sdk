@@ -7,7 +7,7 @@ use lyz\wechat\exceptions\InvalidDecryptException;
 /**
  * Aes 解密工具类
  * Class DecryptAes
- * @package WePayV3\Contracts
+ * @package lyz\wepayv3\contracts
  */
 class DecryptAes
 {

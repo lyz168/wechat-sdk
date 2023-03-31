@@ -2,7 +2,7 @@
 
 namespace lyz\wepay;
 
-use lyz\wechat\Contracts\BasicWePay;
+use lyz\wechat\contracts\BasicWePay;
 
 /**
  * 微信商户打款到零钱
@@ -16,8 +16,8 @@ class Transfers extends BasicWePay
      * 企业付款到零钱
      * @param array $options
      * @return array
-     * @throws \WeChat\Exceptions\InvalidResponseException
-     * @throws \WeChat\Exceptions\LocalCacheException
+     * @throws \lyz\wechat\exceptions\InvalidResponseException
+     * @throws \lyz\wechat\exceptions\LocalCacheException
      */
     public function create(array $options)
     {
@@ -33,8 +33,8 @@ class Transfers extends BasicWePay
      * 查询企业付款到零钱
      * @param string $partnerTradeNo 商户调用企业付款API时使用的商户订单号
      * @return array
-     * @throws \WeChat\Exceptions\InvalidResponseException
-     * @throws \WeChat\Exceptions\LocalCacheException
+     * @throws \lyz\wechat\exceptions\InvalidResponseException
+     * @throws \lyz\wechat\exceptions\LocalCacheException
      */
     public function query($partnerTradeNo)
     {

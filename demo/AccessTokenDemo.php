@@ -2,7 +2,7 @@
 
 include "../vendor/autoload.php";
 
-use lyz\wechat\Contracts\BasicWeChat;
+use lyz\wechat\contracts\BasicWeChat;
 
 // 测试
 // $demo = new AccessTokenDemo();
@@ -52,7 +52,7 @@ class AccessTokenDemo
             // 没过期返回token
             return 'AccessToken';
         } else {
-            // 过期重新获取token  \lyz\wechat\Contracts\BasicWeChat->getAccessToken(false);
+            // 过期重新获取token  \lyz\wechat\contracts\BasicWeChat->getAccessToken(false);
             // 更新本地存储的 token 
             return (new BasicWeChat($this->config))->getAccessToken(false);
         }
@@ -71,7 +71,7 @@ class AccessTokenDemo
             // 没过期返回token
             return 'AccessToken';
         } else {
-            // 过期重新获取token  \lyz\wechat\Contracts\BasicWeChat->getAccessToken(false);
+            // 过期重新获取token  \lyz\wechat\contracts\BasicWeChat->getAccessToken(false);
             // 更新本地存储的 token 
             return $wechat->getAccessToken(false);
         }

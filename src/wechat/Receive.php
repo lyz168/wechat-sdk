@@ -2,7 +2,7 @@
 
 namespace lyz\wechat;
 
-use lyz\wechat\Contracts\BasicPushEvent;
+use lyz\wechat\contracts\BasicPushEvent;
 
 /**
  * 公众号推送管理

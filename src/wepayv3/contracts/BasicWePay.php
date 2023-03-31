@@ -104,7 +104,7 @@ abstract class BasicWePay
      * @param string|array $jsondata 请求数据 json_encode($data, JSON_UNESCAPED_UNICODE)
      * @param bool $verify 是否验证
      * @return array
-     * @throws \WeChat\Exceptions\InvalidResponseException
+     * @throws \lyz\wepayv3\exceptions\InvalidResponseException
      */
     public function doRequest($method, $pathinfo, $jsondata = '', $verify = false)
     {
@@ -233,8 +233,8 @@ abstract class BasicWePay
      * @param string $sign   原签名值
      * @param string $serial 证书序号
      * @return int
-     * @throws \WeChat\Exceptions\InvalidResponseException
-     * @throws \WeChat\Exceptions\LocalCacheException
+     * @throws \lyz\wepayv3\exceptions\InvalidResponseException
+     * @throws \lyz\wepayv3\exceptions\LocalCacheException
      */
     protected function signVerify($data, $sign, $serial = '')
     {
@@ -252,7 +252,7 @@ abstract class BasicWePay
      * @param string $name
      * @param null|string $content
      * @return string
-     * @throws \WeChat\Exceptions\LocalCacheException
+     * @throws \lyz\wepayv3\exceptions\LocalCacheException
      */
     protected function fileCache($name, $content = null)
     {

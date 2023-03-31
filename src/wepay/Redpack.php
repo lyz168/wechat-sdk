@@ -2,7 +2,7 @@
 
 namespace lyz\wepay;
 
-use lyz\wechat\Contracts\BasicWePay;
+use lyz\wechat\contracts\BasicWePay;
 
 /**
  * 微信红包支持
@@ -15,8 +15,8 @@ class Redpack extends BasicWePay
      * 发放普通红包
      * @param array $options
      * @return array
-     * @throws \WeChat\Exceptions\InvalidResponseException
-     * @throws \WeChat\Exceptions\LocalCacheException
+     * @throws \lyz\wechat\exceptions\InvalidResponseException
+     * @throws \lyz\wechat\exceptions\LocalCacheException
      */
     public function create(array $options)
     {
@@ -30,8 +30,8 @@ class Redpack extends BasicWePay
      * 发放裂变红包
      * @param array $options
      * @return array
-     * @throws \WeChat\Exceptions\InvalidResponseException
-     * @throws \WeChat\Exceptions\LocalCacheException
+     * @throws \lyz\wechat\exceptions\InvalidResponseException
+     * @throws \lyz\wechat\exceptions\LocalCacheException
      */
     public function groups(array $options)
     {
@@ -45,8 +45,8 @@ class Redpack extends BasicWePay
      * 查询红包记录
      * @param string $mchBillno 商户发放红包的商户订单号
      * @return array
-     * @throws \WeChat\Exceptions\InvalidResponseException
-     * @throws \WeChat\Exceptions\LocalCacheException
+     * @throws \lyz\wechat\exceptions\InvalidResponseException
+     * @throws \lyz\wechat\exceptions\LocalCacheException
      */
     public function query($mchBillno)
     {

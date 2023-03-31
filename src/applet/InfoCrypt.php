@@ -4,7 +4,7 @@ namespace lyz\applet;
 
 use lyz\wechat\exceptions\InvalidResponseException;
 use lyz\wechat\exceptions\InvalidDecryptException;
-use lyz\wechat\Contracts\BasicWeChat;
+use lyz\wechat\contracts\BasicWeChat;
 use lyz\wechat\utils\Curl;
 
 /**
@@ -52,8 +52,8 @@ class InfoCrypt extends BasicWeChat
      * @param string $iv 加密算法的初始向量
      * @param string $encryptedData 加密数据( encryptedData )
      * @return array
-     * @throws \WeChat\Exceptions\InvalidDecryptException
-     * @throws \WeChat\Exceptions\InvalidResponseException
+     * @throws \lyz\wechat\exceptions\InvalidDecryptException
+     * @throws \lyz\wechat\exceptions\InvalidResponseException
      */
     public function userInfo($code, $iv, $encryptedData)
     {

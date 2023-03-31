@@ -1,6 +1,6 @@
 <?php
 
-namespace lyz\wechat\Contracts;
+namespace lyz\wechat\contracts;
 
 use lyz\wechat\exceptions\InvalidArgumentException;
 use lyz\wechat\exceptions\InvalidResponseException;
@@ -9,7 +9,7 @@ use lyz\wechat\utils\Tools;
 /**
  * 微信支付基础类
  * Class BasicPay
- * @package lyz\wechat\Contracts
+ * @package lyz\wechat\contracts
  */
 class BasicWePay
 {
@@ -78,7 +78,7 @@ class BasicWePay
     /**
      * 获取微信支付通知
      * @return array
-     * @throws \WeChat\Exceptions\InvalidResponseException
+     * @throws \lyz\wechat\exceptions\InvalidResponseException
      */
     public function getNotify()
     {
@@ -124,8 +124,8 @@ class BasicWePay
      * 转换短链接
      * @param string $longUrl 需要转换的URL，签名用原串，传输需URLencode
      * @return array
-     * @throws \WeChat\Exceptions\InvalidResponseException
-     * @throws \WeChat\Exceptions\LocalCacheException
+     * @throws \lyz\wechat\exceptions\InvalidResponseException
+     * @throws \lyz\wechat\exceptions\LocalCacheException
      */
     public function shortUrl($longUrl)
     {
@@ -157,8 +157,8 @@ class BasicWePay
      * @param bool $needSignType 是否需要传签名类型参数
      * @param bool $needNonceStr
      * @return array
-     * @throws \WeChat\Exceptions\InvalidResponseException
-     * @throws \WeChat\Exceptions\LocalCacheException
+     * @throws \lyz\wechat\exceptions\InvalidResponseException
+     * @throws \lyz\wechat\exceptions\LocalCacheException
      */
     protected function callPostApi($url, array $data, $isCert = false, $signType = 'HMAC-SHA256', $needSignType = true, $needNonceStr = true)
     {

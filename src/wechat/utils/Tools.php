@@ -79,7 +79,7 @@ class Tools
      * 解析JSON内容到数组
      * @param string $json
      * @return array
-     * @throws \WeChat\Exceptions\InvalidResponseException
+     * @throws \lyz\wechat\exceptions\InvalidResponseException
      */
     public static function json2arr($json)
     {

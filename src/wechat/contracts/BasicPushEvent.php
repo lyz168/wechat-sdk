@@ -1,6 +1,6 @@
 <?php
 
-namespace lyz\wechat\Contracts;
+namespace lyz\wechat\contracts;
 
 use lyz\wechat\exceptions\InvalidArgumentException;
 use lyz\wechat\exceptions\InvalidResponseException;
@@ -11,7 +11,7 @@ use lyz\wechat\utils\Tools;
 /**
  * 微信通知处理基本类
  * Class BasicPushEvent
- * @package lyz\wechat\Contracts
+ * @package lyz\wechat\contracts
  */
 class BasicPushEvent
 {
@@ -118,7 +118,7 @@ class BasicPushEvent
      * @param boolean $return 是否返回XML内容
      * @param boolean $isEncrypt 是否加密内容
      * @return string
-     * @throws \WeChat\Exceptions\InvalidDecryptException
+     * @throws \lyz\wechat\exceptions\InvalidDecryptException
      */
     public function reply(array $data = [], $return = false, $isEncrypt = false)
     {

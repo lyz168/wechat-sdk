@@ -1,6 +1,6 @@
 <?php
 
-namespace lyz\wechat\Contracts;
+namespace lyz\wechat\contracts;
 
 use lyz\wechat\exceptions\InvalidArgumentException;
 use lyz\wechat\exceptions\InvalidResponseException;
@@ -9,7 +9,7 @@ use lyz\wechat\utils\Curl;
 
 /**
  * Class BasicWeChat
- * @package lyz\wechat\Contracts
+ * @package lyz\wechat\contracts
  */
 class BasicWeChat
 {
@@ -54,8 +54,8 @@ class BasicWeChat
     /**
      * 获取 AccessToken 回调方式
      *
-     * @param boolean $is_callback 是否使用代替函数
-     * @return string access_token
+     * @param boolean $is_callback 是否使用代替函数 [false: 刷新token]
+     * @return string|array access_token [$is_callback=true 返回string $is_callback=false 返回array]
      */
     public function getAccessToken($is_callback = true)
     {
@@ -68,7 +68,11 @@ class BasicWeChat
         }
 
         $accessToken = $this->_getAccessToken();
-        return $accessToken['access_token'];
+        if ($is_callback) {
+            return $accessToken['access_token'];
+        }
+
+        return $accessToken;
     }
 
     /**
