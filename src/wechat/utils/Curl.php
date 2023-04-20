@@ -53,7 +53,7 @@ class Curl
      *
      * @param array  $options  CURLOPT 选项
      */
-    function __construct($options = [])
+    public function __construct($options = [])
     {
         if (!extension_loaded('curl')) {
             throw new \ErrorException('cURL library is not loaded');
@@ -83,7 +83,7 @@ class Curl
      * @param array|string $data get请求参数
      * @return array|boolean
      **/
-    function get($url = '', $data = [])
+    public function get($url = '', $data = [])
     {
         if ($url !== '') {
             $this->setUrl((string)$url, $data);
@@ -102,7 +102,7 @@ class Curl
      * @param array  $data post 请求参数
      * @return array|boolean
      **/
-    function post($url = '', $data = array())
+    public function post($url = '', $data = array())
     {
         if ($url !== '') {
             $this->setUrl((string)$url);
@@ -119,7 +119,7 @@ class Curl
      *
      * @return array|boolean
      **/
-    function exec()
+    public function exec()
     {
         if (empty($this->url)) {
             throw new \ErrorException('url is must');

@@ -7,6 +7,10 @@ return [
         'token'          => '',
         'encodingaeskey' => '',
     ],
+    'applet' => [
+        'appid'          => '',
+        'appsecret'      => '',
+    ],
     'wepay' => [
         'mch_id'         => '',
         'mch_key'        => '',

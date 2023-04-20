@@ -5,6 +5,7 @@ namespace lyz\applet;
 use lyz\wechat\exceptions\InvalidResponseException;
 use lyz\wechat\exceptions\InvalidDecryptException;
 use lyz\wechat\contracts\BasicWeChat;
+use lyz\applet\crypt\WxBizDataCrypt;
 use lyz\wechat\utils\Curl;
 
 /**
@@ -15,6 +16,36 @@ use lyz\wechat\utils\Curl;
 class InfoCrypt extends BasicWeChat
 {
     /**
+     * 通过授权码换取手机号
+     * @param string $code
+     * @return array
+     * @throws \WeChat\Exceptions\InvalidResponseException
+     * @throws \WeChat\Exceptions\LocalCacheException
+     */
+    public function getPhoneNumber($code)
+    {
+        $access_token = $this->getAccessToken();
+        $url = 'https://api.weixin.qq.com/wxa/business/getuserphonenumber?access_token=' . $access_token;
+        $curl = new Curl();
+        return $curl->post($url, ['code' => $code]);
+        /*
+            {
+                "errcode": 0,                    // number 错误码 [-1, 40029]
+                "errmsg": "ok",                  // string 错误信息 [system error(系统繁忙，此时请开发者稍候再试), code 无效(js_code无效)]
+                "phone_info": {                  // object 用户手机号信息
+                    "phoneNumber": "xxxxxx",     // string 用户绑定的手机号（国外手机号会有区号）
+                    "purePhoneNumber": "xxxxxx", // string 没有区号的手机号
+                    "countryCode": 86,           // string 区号
+                    "watermark": {               // object 数据水印
+                        "timestamp": 1637744274, // number 用户获取手机号操作的时间戳
+                        "appid": "xxxx"          // string 小程序 appid
+                    }
+                }
+            } 
+         */
+    }
+
+    /**
      * 数据签名校验
      * @param string $iv
      * @param string $sessionKey
@@ -23,13 +54,12 @@ class InfoCrypt extends BasicWeChat
      */
     public function decode($iv, $sessionKey, $encryptedData)
     {
-        // require_once __DIR__ . DIRECTORY_SEPARATOR . 'crypt' . DIRECTORY_SEPARATOR . 'wxBizDataCrypt.php';
-        // $pc = new WXBizDataCrypt($this->config->get('appid'), $sessionKey);
-        // $errCode = $pc->decryptData($encryptedData, $iv, $data);
-        // if ($errCode == 0) {
-        //     return json_decode($data, true);
-        // }
-        // return false;
+        $pc = new WXBizDataCrypt($this->config->get('appid'), $sessionKey);
+        $errCode = $pc->decryptData($encryptedData, $iv, $data);
+        if ($errCode == 0) {
+            return json_decode($data, true);
+        }
+        return false;
     }
 
     /**
